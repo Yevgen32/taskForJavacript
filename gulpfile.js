@@ -4,7 +4,14 @@ const gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglifyjs'),
     del = require('del'),
-    cleanCSS = require('gulp-clean-css');
+    cleanCSS = require('gulp-clean-css'),
+    babel = require('gulp-babel');
+
+gulp.task('compiled', async () => {
+    return gulp.src('src/**/*.js')
+        .pipe(babel())
+        .pipe(gulp.dest('dist/js'));
+});
 
 gulp.task('sass', () => {
     return gulp.src('src/sass/**/*.sass')
@@ -61,7 +68,7 @@ gulp.task('move', ()=>{
     return buildHtml, buildFonts, buildJs;
 });
 
-gulp.task('build', gulp.series('clean','sass', 'minify-css', 'scriptsLibrary', 'scriptsMain', 'move'), ()=>{
+gulp.task('build', gulp.series('clean','sass', 'compiled', 'minify-css', 'scriptsLibrary', 'scriptsMain', 'move'), ()=>{
 
 });
 

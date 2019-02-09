@@ -1,34 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, quis, repellendus. Ab ad animi dignissimos dolor
-    explicabo impedit inventore, ipsum iure maxime perferendis quae saepe sed sit, tenetur totam velit.
+<p id="time"></p>
+<div>
+<button onclick="doTimer()">start</button>
+<button onclick="stopCount()">pause</button>
+<button onclick="resetCount()">reset</button>
 </div>
-<div>Accusamus asperiores at dolorum et illum incidunt odio repellendus. Aut iusto molestias neque officiis optio
-    praesentium vel veniam. Autem, delectus laboriosam! Blanditiis consequuntur corporis nihil sint unde? Deleniti iste,
-    sed.
+<div>
+годин
+<select id="secectHour">
+    <option>00</option>
+    <option>01</option>
+    <option>02</option>
+    <option>03</option>
+    <option>04</option>
+    <option>05</option>
+    <option>06</option>
+    <option>07</option>
+    <option>08</option>
+    <option>09</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    <option>13</option>
+    <option>14</option>
+    <option>15</option>
+</select>
 </div>
-<div>Facilis, pariatur, porro. Aliquid aperiam dolor eius esse ex exercitationem facilis id laudantium molestias natus,
-    omnis quas qui recusandae repellendus sint soluta temporibus! Adipisci, aspernatur eius libero nesciunt numquam
-    recusandae.
+<div>
+хвилин
+<select id="secectMin">
+    <option>00</option>
+    <option>05</option>
+    <option>10</option>
+    <option>15</option>
+    <option>20</option>
+    <option>25</option>
+    <option>30</option>
+    <option>35</option>
+    <option>40</option>
+    <option>45</option>
+    <option>50</option>
+    <option>55</option>
+    <option>60</option>
+</select>
 </div>
-<div>Aliquam dolor omnis temporibus? A aliquam aspernatur atque blanditiis, consequuntur cupiditate dolorum eveniet
-    facilis harum iusto, laborum magnam maiores officiis quis ratione reiciendis sint soluta tenetur! Iure optio sequi
-    tempora!
+секунд
+<select id="secectSec">
+    <option>00</option>
+    <option>05</option>
+    <option>10</option>
+    <option>15</option>
+    <option>20</option>
+    <option>25</option>
+    <option>30</option>
+    <option>35</option>
+    <option>40</option>
+    <option>45</option>
+    <option>50</option>
+    <option>55</option>
+    <option>60</option>
+</select>
 </div>
-<div>Accusamus corporis doloribus fuga impedit incidunt laborum nam tenetur velit! Aliquam atque autem dicta dolore eum
-    expedita hic ipsa magni nisi repellat? Dolores, dolorum harum illum labore porro possimus rerum?
-</div>
-<div>Culpa deleniti earum est id ipsum necessitatibus, nesciunt odio placeat possimus veniam. A aperiam architecto atque
-    distinctio! Aliquam consectetur corporis, ea facilis, labore, laborum officia quasi quod ratione unde veritatis?
-</div>
-    <button>test</button>
-<script src="js/libs.min.js"></script>
-<script src="js/main.js"></script>
+<button onclick="selectTime()">select time</button>
+
+
+<script src="js/main.js">
+</script>
 </body>
 </html>

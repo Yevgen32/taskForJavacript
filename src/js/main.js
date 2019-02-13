@@ -1,61 +1,52 @@
-let timer_is_on = 0;
-let t;
-let totalSeconds = 300;
-let hours = Math.floor(totalSeconds / 3600);
-let minutes = Math.floor((totalSeconds % 3600) / 60);
-let seconds = totalSeconds % 60;
-minutes = String(minutes).padStart(2, "0");
-hours = String(hours).padStart(2, "0");
-seconds = String(seconds).padStart(2, "0");
-let allTime = hours + ":" + minutes + ":" + seconds;
-let time = document.getElementById('time');
-time.innerHTML = allTime;
+function Constructor(totalSeconds, time, start, pause, reset) {
+    this.start = document.querySelector(start);
+    this.pause = document.querySelector(pause);
+    this.reset = document.querySelector(reset);
+    this.totalSeconds = totalSeconds;
+    this.time = document.querySelector(time);
+    this.timer = null;
 
+    this.doTimer = function () {
+        if (totalSeconds < 0)
+            return;
+        this.totalSeconds--;
+        this.setTime();
+        this.timer = setTimeout(()=> this.doTimer(), 1000);
 
-function timedCount()
-{
-    if (totalSeconds>=0){
-        totalSeconds--;
-        hours = Math.floor(totalSeconds / 3600);
-        minutes = Math.floor((totalSeconds % 3600) / 60);
-        seconds = totalSeconds % 60;
-        minutes = String(minutes).padStart(2, "0");
+    };
+    this.stopCount = function () {
+        clearTimeout(this.timer);
+    };
+    this.setTime = function () {
+        let hours = Math.floor(this.totalSeconds / 3600),
+            minutes = Math.floor((this.totalSeconds % 3600) / 60),
+            seconds = this.totalSeconds % 60;
         hours = String(hours).padStart(2, "0");
+        minutes = String(minutes).padStart(2, "0");
         seconds = String(seconds).padStart(2, "0");
-        allTime = hours + ":" + minutes + ":" + seconds;
-        time.innerHTML = allTime;
-        console.log(totalSeconds);
-        t=setTimeout("timedCount()",1000);
-    }
-}
-function doTimer()
-{
-    if (!timer_is_on)
-    {
-        timer_is_on=1;
-        timedCount();
-    }
-}
-function stopCount()
-{
-    clearTimeout(t);
-    timer_is_on=0;
-}
-function resetCount() {
-    location.reload()
+
+        this.time.innerHTML = hours + ":" + minutes + ":" + seconds;
+        console.log(this.time.innerHTML);
+
+    };
+    this.resetCount = function () {
+        this.totalSeconds = totalSeconds;
+        this.setTime();
+        clearTimeout(this.timer);
+    };
+    this.setTime();
+
+    this.start.addEventListener('click', ()=>{
+        this.doTimer()
+    })
+    this.pause.addEventListener('click', ()=>{
+        this.stopCount()
+    })
+    this.reset.addEventListener('click', ()=>{
+        this.resetCount()
+    })
 }
 
-function selectTime() {
-    let selectSec = document.getElementById('secectSec');
-    let selectMin = document.getElementById('secectMin');
-    let selectHour = document.getElementById('secectHour');
-    totalSeconds = Math.floor( selectHour.value*3600) + Math.floor(selectMin.value*60) + Math.floor(selectSec.value);
-    hours = Math.floor(totalSeconds / 3600);
-    minutes = Math.floor((totalSeconds % 3600) / 60);
-    seconds = totalSeconds % 60;
-    minutes = String(minutes).padStart(2, "0");
-    hours = String(hours).padStart(2, "0");
-    seconds = String(seconds).padStart(2, "0");
-    allTime = hours + ":" + minutes + ":" + seconds;
-    time.innerHTML = allTime;
-}
+new Constructor(600, '#time', '#start', '#pause', '#reset');
+
+new Constructor(30000, '#time1', '#start1', '#pause1', '#reset1' )
